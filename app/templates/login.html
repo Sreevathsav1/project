@@ -1,0 +1,43 @@
+{% extends "layout.html" %}
+
+{% block content %}
+<form method="POST">
+    <div class="form-group">
+        <label for="email">Email</label>
+        <input type="text" class="form-control input-lg" id="email" name="email"/>
+    </div>
+    <div class="form-group">
+    <label for="password">Password</label>
+    <input type="password" class="target form-control input-lg" id="password" name="password"/>
+    </div>
+    <div class="form-group">
+        <input type="button" class="btn btn-primary btn-lg btn-block" value="Login" onclick="submitForm()"/>
+    </div>
+    
+    <input type="hidden" name="dwellAvg" id="dwellAvg"/>
+    <input type="hidden" name="flightAvg" id="flightAvg"/>
+    <input type="hidden" name="dwellSD" id="dwellSD"/>
+    <input type="hidden" name="flightSD" id="flightSD"/>
+    <input type="hidden" name="n1" id="n1"/>
+    <input type="hidden" name="n2" id="n2"/>
+</form>
+<div>
+{% with messages = get_flashed_messages() %}
+{% if messages %}
+{% for message in messages %}
+{% if message == "Successful" %}
+<div class="alert alert-success alert-dismissable fade in">
+  {{ message }}
+</div>
+{% else %}
+<div class="alert alert-info alert-dismissable fade in">
+  {{ message }}
+</div>
+{% endif %}
+{% endfor %}
+{% endif %}
+{% endwith %}
+</div>
+{% endblock content %}
+
+        
